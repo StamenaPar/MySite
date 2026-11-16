@@ -13,6 +13,14 @@
     { id: 'plate-blush', name: 'Blush Side Plate', desc: 'Soft pink 7 inch plate for toast and cake.', price: 2200, shape: 'plate', bg: '#f6e1df', fg: '#c07a76' }
   ];
 
+  // Categories shown in the left navbar; ids match the nav link anchors.
+  var CATEGORIES = [
+    { id: 'mugs', title: 'Mugs', shape: 'mug' },
+    { id: 'planters', title: 'Planters', shape: 'pot' },
+    { id: 'vases', title: 'Vases', shape: 'vase' },
+    { id: 'plates', title: 'Plates', shape: 'plate' }
+  ];
+
   var SHAPES = {
     mug: '<rect x="58" y="70" width="72" height="72" rx="10"/><path d="M130 86h12a16 16 0 0 1 0 32h-12" fill="none" stroke="currentColor" stroke-width="9"/>',
     pot: '<path d="M57 78h86l-12 68H69z"/><rect x="48" y="62" width="104" height="18" rx="5"/>',
@@ -29,14 +37,28 @@
 
   window.Shop = { PRODUCTS: PRODUCTS, art: art, format: format };
 
+  function card(p) {
+    return '<li class="card">' + art(p) +
+      '<div class="card-body"><h4>' + p.name + '</h4><p>' + p.desc + '</p>' +
+      '<p class="price">' + format(p.price) + '</p>' +
+      '<button class="btn" type="button" data-add="' + p.id + '">Add to cart<span class="sr-only">: ' + p.name + '</span></button>' +
+      '</div></li>';
+  }
+
   var grid = document.getElementById('product-grid');
   if (grid) {
-    grid.innerHTML = PRODUCTS.map(function (p) {
-      return '<li class="card">' + art(p) +
-        '<div class="card-body"><h3>' + p.name + '</h3><p>' + p.desc + '</p>' +
-        '<p class="price">' + format(p.price) + '</p>' +
-        '<button class="btn" type="button" data-add="' + p.id + '">Add to cart<span class="sr-only">: ' + p.name + '</span></button>' +
-        '</div></li>';
+    grid.innerHTML = CATEGORIES.map(function (c) {
+      var items = PRODUCTS.filter(function (p) { return p.shape === c.shape; });
+      if (!items.length) return '';
+      return '<section class="category" id="' + c.id + '" aria-labelledby="' + c.id + '-title">' +
+        '<h3 id="' + c.id + '-title">' + c.title + '</h3>' +
+        '<ul class="grid">' + items.map(card).join('') + '</ul></section>';
     }).join('');
+
+    // Category sections are created by script, so honour a #hash in the URL now.
+    if (location.hash.length > 1) {
+      var target = document.getElementById(location.hash.slice(1));
+      if (target && grid.contains(target)) target.scrollIntoView();
+    }
   }
 })();

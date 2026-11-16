@@ -5,6 +5,7 @@
   var backdrop = document.getElementById('backdrop');
   var themeBtn = document.getElementById('themeToggle');
   var links = Array.prototype.slice.call(sidebar.querySelectorAll('a[href^="#"]'));
+  var groupToggles = Array.prototype.slice.call(sidebar.querySelectorAll('.group-toggle'));
 
   /* Year */
   var year = document.getElementById('year');
@@ -21,7 +22,10 @@
   toggle.addEventListener('click', function () {
     var open = !root.classList.contains('nav-open');
     setNav(open);
-    if (open && links[0]) { links[0].focus(); }
+    if (open) {
+      var first = sidebar.querySelector('a, button');
+      if (first) { first.focus(); }
+    }
   });
   backdrop.addEventListener('click', function () { setNav(false); });
   document.addEventListener('keydown', function (e) {
@@ -34,7 +38,31 @@
     if (window.innerWidth > 860 && root.classList.contains('nav-open')) { setNav(false); }
   });
 
-  /* Current section highlighting */
+  /* Expand / collapse navigation groups */
+  var groupState = {};
+  try {
+    var parsed = JSON.parse(localStorage.getItem('navGroups'));
+    if (parsed && typeof parsed === 'object') { groupState = parsed; }
+  } catch (e) {}
+  function setGroup(btn, open) {
+    var list = document.getElementById(btn.getAttribute('aria-controls'));
+    btn.setAttribute('aria-expanded', String(open));
+    if (list) { list.hidden = !open; }
+  }
+  groupToggles.forEach(function (btn) {
+    var key = btn.getAttribute('data-group');
+    var list = document.getElementById(btn.getAttribute('aria-controls'));
+    var hasCurrent = !!(list && list.querySelector('[aria-current="page"]'));
+    setGroup(btn, hasCurrent || groupState[key] !== false);
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      setGroup(btn, open);
+      groupState[key] = open;
+      try { localStorage.setItem('navGroups', JSON.stringify(groupState)); } catch (e) {}
+    });
+  });
+
+  /* Current section highlighting (pages with in-page section links) */
   function setCurrent(id) {
     links.forEach(function (a) {
       if (a.getAttribute('href') === '#' + id) {
@@ -50,7 +78,7 @@
       setNav(false);
     });
   });
-  if ('IntersectionObserver' in window) {
+  if (links.length && 'IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) { setCurrent(entry.target.id); }

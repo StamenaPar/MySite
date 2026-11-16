@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbor — Header, left navigation and footer layout</title>
+<meta name="description" content="A clean, responsive site layout with a header, a left-side navigation bar and a footer.">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/theme.js"></script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="layout">
+
+<header class="site-header">
+<button class="icon-btn nav-toggle" id="navToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation" hidden>
+<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</button>
+<a class="brand" href="index.html">
+<svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M9 8v16M9 16h14M23 8v16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+<span>Harbor</span>
+</a>
+<p class="tagline">A calm place for your content</p>
+<div class="header-actions">
+<button class="btn btn-ghost" id="themeToggle" type="button" aria-pressed="false" hidden>
+<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+<span>Dark mode</span>
+</button>
+<a class="btn btn-primary" href="#contact">Get in touch</a>
+</div>
+</header>
+
+<nav class="sidebar" id="sidebar" aria-label="Main">
+<p class="nav-heading">Navigate</p>
+<ul class="nav-list">
+<li><a href="#overview" aria-current="true"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Overview</a></li>
+<li><a href="#features"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L3.400 9.400l6-.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Features</a></li>
+<li><a href="#layout"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 9v11" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Layout</a></li>
+<li><a href="#faq"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.500 9.500a2.500 2.500 0 1 1 3.500 2.300c-.7.4-1 .9-1 1.700M12 17h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>FAQ</a></li>
+<li><a href="#contact"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Contact</a></li>
+</ul>
+<div class="nav-note">
+<strong>Tip</strong>
+<p>The navigation highlights the section you are reading as you scroll.</p>
+</div>
+</nav>
+<div class="backdrop" id="backdrop" hidden></div>
+
+<main id="main" class="content" tabindex="-1">
+
+<section id="overview" class="hero" aria-labelledby="overview-title">
+<p class="eyebrow">Overview</p>
+<h1 id="overview-title">A simple site with a header, a left navigation bar and a footer.</h1>
+<p class="lead">Harbor is a tidy starting point: a header that stays in view, navigation anchored on the left, and a footer that closes every page. It adapts from phones to wide screens.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#features">Explore features</a>
+<a class="btn btn-ghost" href="#layout">See the layout</a>
+</div>
+</section>
+
+<section id="features" aria-labelledby="features-title">
+<p class="eyebrow">Features</p>
+<h2 id="features-title">Everything a solid page needs</h2>
+<div class="cards">
+<article class="card"><h3>Responsive</h3><p>On small screens the left navigation tucks into a slide-out drawer opened from the header.</p></article>
+<article class="card"><h3>Accessible</h3><p>Semantic landmarks, a skip link, visible focus styles and full keyboard support.</p></article>
+<article class="card"><h3>Light and dark</h3><p>Follows your system preference, with a toggle in the header to switch at any time.</p></article>
+<article class="card"><h3>No dependencies</h3><p>Plain HTML, CSS and JavaScript. Nothing to install, build or load from elsewhere.</p></article>
+</div>
+</section>
+
+<section id="layout" aria-labelledby="layout-title">
+<p class="eyebrow">Layout</p>
+<h2 id="layout-title">Three regions around your content</h2>
+<div class="split">
+<ol class="steps">
+<li><strong>Header</strong> — holds the brand, the theme switch and a primary action. It stays at the top while you scroll.</li>
+<li><strong>Left navigation</strong> — lists every section and marks the current one. It stays in place beside the content.</li>
+<li><strong>Footer</strong> — spans the full width with secondary links and the copyright line.</li>
+</ol>
+<div class="diagram" role="img" aria-label="Diagram: header on top, navigation on the left, content on the right, footer at the bottom">
+<div class="d-header">Header</div>
+<div class="d-nav">Nav</div>
+<div class="d-main">Content</div>
+<div class="d-footer">Footer</div>
+</div>
+</div>
+</section>
+
+<section id="faq" aria-labelledby="faq-title">
+<p class="eyebrow">FAQ</p>
+<h2 id="faq-title">Common questions</h2>
+<details><summary>Does the navigation work without JavaScript?</summary><p>Yes. Without JavaScript the navigation is shown as a normal block of links and every link still jumps to its section.</p></details>
+<details><summary>How do I add a navigation item?</summary><p>Add a list item with a link to the navigation list, and a section with the matching id in the main content.</p></details>
+<details><summary>Can I change the colours?</summary><p>All colours are CSS custom properties at the top of the stylesheet, for both the light and dark themes.</p></details>
+</section>
+
+<section id="contact" aria-labelledby="contact-title">
+<p class="eyebrow">Contact</p>
+<h2 id="contact-title">Say hello</h2>
+<div class="contact-box">
+<p>Questions or ideas? Send a message and we will get back to you.</p>
+<a class="btn btn-primary" href="mailto:hello@example.com">hello@example.com</a>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<p>&copy; <span id="year">2025</span> Harbor. All rights reserved.</p>
+<ul class="footer-links">
+<li><a href="#overview">Back to top</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</footer>
+
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

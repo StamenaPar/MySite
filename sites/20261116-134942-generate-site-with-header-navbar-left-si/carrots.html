@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carrots — Atlas</title>
+<meta name="description" content="Carrots: characteristics and a sample price.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <button class="nav-toggle" id="navToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation">
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M16 7l8 18h-4l-4-9.5L12 25H8z" fill="#fff"/></svg>
+    <span>Atlas</span>
+  </a>
+  <p class="header-tagline">A simple, sturdy site layout</p>
+  <a class="btn btn-small header-cta" href="index.html#contact">Get in touch</a>
+</header>
+
+<div class="backdrop" id="backdrop" hidden></div>
+
+<nav class="sidebar" id="sidebar" aria-label="Main">
+  <p class="sidebar-title">Navigation</p>
+  <ul class="nav-list">
+    <li><a href="index.html#overview" class="nav-link">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6h-6v6H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span>Overview</span></a></li>
+    <li><a href="index.html#features" class="nav-link">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L3.4 9.400l6-.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span>Features</span></a></li>
+    <li><a href="index.html#layout" class="nav-link">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 4h18v16H3zM3 9h18M9 9v11" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span>Layout</span></a></li>
+    <li><a href="index.html#contact" class="nav-link">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span>Contact</span></a></li>
+  </ul>
+
+  <div class="nav-group">
+    <button type="button" class="nav-group-toggle" aria-expanded="true" aria-controls="group-fruit">
+      <span>Fruit</span>
+      <svg class="chevron" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <ul class="nav-list nav-sublist" id="group-fruit">
+      <li><a href="apple.html" class="nav-link"><img class="nav-icon" src="img/apple.svg" alt="" width="22" height="22"><span>Apple</span></a></li>
+      <li><a href="pear.html" class="nav-link"><img class="nav-icon" src="img/pear.svg" alt="" width="22" height="22"><span>Pear</span></a></li>
+      <li><a href="banana.html" class="nav-link"><img class="nav-icon" src="img/banana.svg" alt="" width="22" height="22"><span>Banana</span></a></li>
+    </ul>
+  </div>
+
+  <div class="nav-group">
+    <button type="button" class="nav-group-toggle" aria-expanded="true" aria-controls="group-vegetables">
+      <span>Vegetables</span>
+      <svg class="chevron" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <ul class="nav-list nav-sublist" id="group-vegetables">
+      <li><a href="carrots.html" class="nav-link" aria-current="page"><img class="nav-icon" src="img/carrots.svg" alt="" width="22" height="22"><span>Carrots</span></a></li>
+      <li><a href="onions.html" class="nav-link"><img class="nav-icon" src="img/onions.svg" alt="" width="22" height="22"><span>Onions</span></a></li>
+      <li><a href="garlic.html" class="nav-link"><img class="nav-icon" src="img/garlic.svg" alt="" width="22" height="22"><span>Garlic</span></a></li>
+      <li><a href="cabbage.html" class="nav-link"><img class="nav-icon" src="img/cabbage.svg" alt="" width="22" height="22"><span>Cabbage</span></a></li>
+      <li><a href="potatoes.html" class="nav-link"><img class="nav-icon" src="img/potatoes.svg" alt="" width="22" height="22"><span>Potatoes</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main" class="content" tabindex="-1">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol><li><a href="index.html">Home</a></li><li>Vegetables</li><li aria-current="page">Carrots</li></ol>
+  </nav>
+
+  <section class="section" aria-labelledby="item-title">
+    <div class="product-hero">
+      <div class="product-icon"><img src="img/carrots.svg" alt="" width="96" height="96"></div>
+      <div class="product-info">
+        <p class="eyebrow">Vegetables</p>
+        <h1 id="item-title">Carrots</h1>
+        <p class="lead">A crunchy root vegetable that works raw in salads, roasted or in soups.</p>
+        <p class="price"><span class="price-value">$1.09</span> <span class="price-unit">per kg</span></p>
+        <p class="price-note">Dummy price for demonstration only.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="spec-title">
+    <h2 id="spec-title">Characteristics</h2>
+    <dl class="specs">
+      <div><dt>Group</dt><dd>Vegetables</dd></div>
+      <div><dt>Price (dummy)</dt><dd>$1.09 per kg</dd></div>
+      <div><dt>Colour</dt><dd>Orange</dd></div>
+      <div><dt>Taste</dt><dd>Sweet, earthy and crunchy</dd></div>
+      <div><dt>Season</dt><dd>All year, best from summer to autumn</dd></div>
+      <div><dt>Energy</dt><dd>About 41 kcal per 100 g</dd></div>
+      <div><dt>Storage</dt><dd>Refrigerated, 3 to 4 weeks</dd></div>
+    </dl>
+  </section>
+
+  <nav class="pager" aria-label="More produce">
+    <a class="btn btn-ghost" href="banana.html">Previous: Banana</a>
+    <a class="btn btn-ghost" href="onions.html">Next: Onions</a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year">2025</span> Atlas. All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="index.html#overview">Overview</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="#main">Back to top</a></li>
+  </ul>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

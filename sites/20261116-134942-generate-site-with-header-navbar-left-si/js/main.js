@@ -39,9 +39,57 @@
     });
   }
 
-  // --- Highlight the current section in the left navigation ---
+  // --- Expand / collapse navigation groups ---
+  var STORAGE_KEY = 'atlasNavGroups';
+
+  function readState() {
+    try {
+      var parsed = JSON.parse(window.localStorage.getItem(STORAGE_KEY));
+      return parsed && typeof parsed === 'object' ? parsed : {};
+    } catch (err) {
+      return {};
+    }
+  }
+
+  function saveState(state) {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (err) { /* storage unavailable: state just is not remembered */ }
+  }
+
+  var groupState = readState();
+  var groupToggles = Array.prototype.slice.call(document.querySelectorAll('.nav-group-toggle'));
+
+  groupToggles.forEach(function (btn) {
+    var id = btn.getAttribute('aria-controls');
+    var list = id ? document.getElementById(id) : null;
+    if (!list) { return; }
+
+    function setExpanded(expanded) {
+      btn.setAttribute('aria-expanded', String(expanded));
+      list.hidden = !expanded;
+    }
+
+    // A group holding the current page always starts expanded.
+    var holdsCurrent = !!list.querySelector('[aria-current="page"]');
+    setExpanded(holdsCurrent || groupState[id] !== false);
+
+    btn.addEventListener('click', function () {
+      var expanded = btn.getAttribute('aria-expanded') !== 'true';
+      setExpanded(expanded);
+      groupState[id] = expanded;
+      saveState(groupState);
+    });
+  });
+
+  // --- Highlight the current section in the left navigation (same-page links only) ---
+  var sectionLinks = links.filter(function (link) {
+    var href = link.getAttribute('href') || '';
+    return href.charAt(0) === '#' && href.length > 1;
+  });
+
   function setCurrent(id) {
-    links.forEach(function (link) {
+    sectionLinks.forEach(function (link) {
       if (link.getAttribute('href') === '#' + id) {
         link.setAttribute('aria-current', 'true');
       } else {
@@ -50,7 +98,7 @@
     });
   }
 
-  var sections = links
+  var sections = sectionLinks
     .map(function (link) { return document.getElementById(link.getAttribute('href').slice(1)); })
     .filter(Boolean);
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atlas — Header, left navigation and footer layout</title>
-<meta name="description" content="A clean, responsive site layout with a header, a left-side navigation bar and a footer.">
+<meta name="description" content="A clean, responsive site layout with a header, a left-side navigation bar with fruit and vegetable groups, and a footer.">
 <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
@@ -41,6 +41,32 @@
       <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
       <span>Contact</span></a></li>
   </ul>
+
+  <div class="nav-group">
+    <button type="button" class="nav-group-toggle" aria-expanded="true" aria-controls="group-fruit">
+      <span>Fruit</span>
+      <svg class="chevron" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <ul class="nav-list nav-sublist" id="group-fruit">
+      <li><a href="apple.html" class="nav-link"><img class="nav-icon" src="img/apple.svg" alt="" width="22" height="22"><span>Apple</span></a></li>
+      <li><a href="pear.html" class="nav-link"><img class="nav-icon" src="img/pear.svg" alt="" width="22" height="22"><span>Pear</span></a></li>
+      <li><a href="banana.html" class="nav-link"><img class="nav-icon" src="img/banana.svg" alt="" width="22" height="22"><span>Banana</span></a></li>
+    </ul>
+  </div>
+
+  <div class="nav-group">
+    <button type="button" class="nav-group-toggle" aria-expanded="true" aria-controls="group-vegetables">
+      <span>Vegetables</span>
+      <svg class="chevron" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <ul class="nav-list nav-sublist" id="group-vegetables">
+      <li><a href="carrots.html" class="nav-link"><img class="nav-icon" src="img/carrots.svg" alt="" width="22" height="22"><span>Carrots</span></a></li>
+      <li><a href="onions.html" class="nav-link"><img class="nav-icon" src="img/onions.svg" alt="" width="22" height="22"><span>Onions</span></a></li>
+      <li><a href="garlic.html" class="nav-link"><img class="nav-icon" src="img/garlic.svg" alt="" width="22" height="22"><span>Garlic</span></a></li>
+      <li><a href="cabbage.html" class="nav-link"><img class="nav-icon" src="img/cabbage.svg" alt="" width="22" height="22"><span>Cabbage</span></a></li>
+      <li><a href="potatoes.html" class="nav-link"><img class="nav-icon" src="img/potatoes.svg" alt="" width="22" height="22"><span>Potatoes</span></a></li>
+    </ul>
+  </div>
 </nav>
 
 <main id="main" class="content" tabindex="-1">
@@ -52,6 +78,26 @@
       <a class="btn" href="#features">See the features</a>
       <a class="btn btn-ghost" href="#layout">How it is built</a>
     </div>
+  </section>
+
+  <section id="produce" class="section" aria-labelledby="produce-title">
+    <p class="eyebrow">Produce</p>
+    <h2 id="produce-title">Fruit and vegetables</h2>
+    <p>Each item in the left navigation has its own page with an icon, characteristics and a sample price.</p>
+    <h3 class="produce-heading">Fruit</h3>
+    <ul class="produce-grid">
+      <li><a class="produce-tile" href="apple.html"><img src="img/apple.svg" alt="" width="48" height="48"><span>Apple</span></a></li>
+      <li><a class="produce-tile" href="pear.html"><img src="img/pear.svg" alt="" width="48" height="48"><span>Pear</span></a></li>
+      <li><a class="produce-tile" href="banana.html"><img src="img/banana.svg" alt="" width="48" height="48"><span>Banana</span></a></li>
+    </ul>
+    <h3 class="produce-heading">Vegetables</h3>
+    <ul class="produce-grid">
+      <li><a class="produce-tile" href="carrots.html"><img src="img/carrots.svg" alt="" width="48" height="48"><span>Carrots</span></a></li>
+      <li><a class="produce-tile" href="onions.html"><img src="img/onions.svg" alt="" width="48" height="48"><span>Onions</span></a></li>
+      <li><a class="produce-tile" href="garlic.html"><img src="img/garlic.svg" alt="" width="48" height="48"><span>Garlic</span></a></li>
+      <li><a class="produce-tile" href="cabbage.html"><img src="img/cabbage.svg" alt="" width="48" height="48"><span>Cabbage</span></a></li>
+      <li><a class="produce-tile" href="potatoes.html"><img src="img/potatoes.svg" alt="" width="48" height="48"><span>Potatoes</span></a></li>
+    </ul>
   </section>
 
   <section id="features" class="section" aria-labelledby="features-title">

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shopping cart — Harbor</title>
+<meta name="description" content="Review the fruit and vegetables in your demo shopping cart.">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/theme.js"></script>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="layout">
+
+<header class="site-header">
+<button class="icon-btn nav-toggle" id="navToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation" hidden>
+<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</button>
+<a class="brand" href="index.html">
+<svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M9 8v16M9 16h14M23 8v16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+<span>Harbor</span>
+</a>
+<p class="tagline">A calm place for your content</p>
+<div class="header-actions">
+<button class="btn btn-ghost" id="themeToggle" type="button" aria-pressed="false" hidden>
+<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+<span>Dark mode</span>
+</button>
+<a class="btn btn-ghost cart-link" id="cartLink" href="cart.html" aria-label="Shopping cart" aria-current="page"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 4h2.5l2.2 10.5h9.8L19.5 7H6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.6" fill="currentColor"/><circle cx="17" cy="19" r="1.6" fill="currentColor"/></svg><span class="cart-label">Cart</span><span class="cart-count" id="cartCount" hidden>0</span></a>
+<a class="btn btn-primary" href="index.html#contact">Get in touch</a>
+</div>
+</header>
+
+<nav class="sidebar" id="sidebar" aria-label="Main">
+<p class="nav-heading">Navigate</p>
+<ul class="nav-list">
+<li><a href="index.html#overview"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Overview</a></li>
+<li><a href="index.html#features"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L3.400 9.400l6-.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Features</a></li>
+<li><a href="index.html#layout"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 9v11" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Layout</a></li>
+<li><a href="index.html#faq"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.500 9.500a2.500 2.500 0 1 1 3.500 2.300c-.7.4-1 .9-1 1.700M12 17h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>FAQ</a></li>
+<li><a href="index.html#contact"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Contact</a></li>
+</ul>
+<div class="nav-group">
+<button class="group-toggle" type="button" aria-expanded="true" aria-controls="group-fruit" data-group="fruit"><span>Fruit</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<ul class="nav-list" id="group-fruit">
+<li><a href="apple.html"><span class="ico ico-apple" aria-hidden="true"></span>Apple</a></li>
+<li><a href="pear.html"><span class="ico ico-pear" aria-hidden="true"></span>Pear</a></li>
+<li><a href="banana.html"><span class="ico ico-banana" aria-hidden="true"></span>Banana</a></li>
+</ul>
+</div>
+<div class="nav-group">
+<button class="group-toggle" type="button" aria-expanded="true" aria-controls="group-vegetables" data-group="vegetables"><span>Vegetables</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<ul class="nav-list" id="group-vegetables">
+<li><a href="carrots.html"><span class="ico ico-carrots" aria-hidden="true"></span>Carrots</a></li>
+<li><a href="onions.html"><span class="ico ico-onions" aria-hidden="true"></span>Onions</a></li>
+<li><a href="garlic.html"><span class="ico ico-garlic" aria-hidden="true"></span>Garlic</a></li>
+<li><a href="cabbage.html"><span class="ico ico-cabbage" aria-hidden="true"></span>Cabbage</a></li>
+<li><a href="potatoes.html"><span class="ico ico-potatoes" aria-hidden="true"></span>Potatoes</a></li>
+</ul>
+</div>
+<div class="nav-note">
+<strong>Tip</strong>
+<p>The navigation highlights where you are. Select a group title to collapse or expand its list.</p>
+</div>
+</nav>
+<div class="backdrop" id="backdrop" hidden></div>
+
+<main id="main" class="content" tabindex="-1">
+<nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Cart</li></ol></nav>
+
+<section class="hero" aria-labelledby="cart-title">
+<p class="eyebrow">Cart</p>
+<h1 id="cart-title" tabindex="-1">Shopping cart</h1>
+<p class="lead" id="cartSummary">Review the produce you have picked.</p>
+<noscript><p class="cart-empty">The shopping cart needs JavaScript. Please enable it in your browser to add items and see your cart.</p></noscript>
+
+<div class="cart-empty" id="cartEmpty" hidden>
+<p>Your cart is empty.</p>
+<a class="btn btn-primary" href="apple.html">Browse produce</a>
+</div>
+
+<div class="cart-done" id="cartDone" hidden>
+<h2 id="cartDoneTitle" tabindex="-1">Thank you!</h2>
+<p id="cartDoneText">Your demo order is complete.</p>
+<a class="btn btn-primary" href="apple.html">Keep browsing</a>
+</div>
+
+<div id="cartFilled" hidden>
+<ul class="cart-list" id="cartList" aria-label="Items in your cart"></ul>
+<div class="cart-summary">
+<dl class="totals">
+<div><dt>Subtotal</dt><dd id="cartSubtotal">$0.00</dd></div>
+<div><dt>Delivery</dt><dd>Free (sample)</dd></div>
+<div class="grand"><dt>Total</dt><dd id="cartTotal">$0.00</dd></div>
+</dl>
+<div class="cart-actions">
+<button class="btn btn-ghost" id="cartClear" type="button">Clear cart</button>
+<button class="btn btn-primary" id="cartCheckout" type="button">Checkout</button>
+</div>
+<p class="price-note">Demo checkout: sample prices, no payment is taken.</p>
+</div>
+</div>
+
+<p class="buy-status" id="cartStatus" role="status" aria-live="polite"></p>
+</section>
+</main>
+
+<footer class="site-footer">
+<p>&copy; <span id="year">2025</span> Harbor. All rights reserved.</p>
+<ul class="footer-links">
+<li><a href="#top">Back to top</a></li>
+<li><a href="index.html#faq">FAQ</a></li>
+<li><a href="cart.html">Cart</a></li>
+<li><a href="index.html#contact">Contact</a></li>
+</ul>
+</footer>
+
+</div>
+<script src="js/main.js"></script>
+<script src="js/cart.js"></script>
+</body>
+</html>

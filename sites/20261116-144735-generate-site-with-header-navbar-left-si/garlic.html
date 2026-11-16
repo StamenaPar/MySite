@@ -27,6 +27,7 @@
 <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
 <span>Dark mode</span>
 </button>
+<a class="btn btn-ghost cart-link" id="cartLink" href="cart.html" aria-label="Shopping cart"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 4h2.5l2.2 10.5h9.8L19.5 7H6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.6" fill="currentColor"/><circle cx="17" cy="19" r="1.6" fill="currentColor"/></svg><span class="cart-label">Cart</span><span class="cart-count" id="cartCount" hidden>0</span></a>
 <a class="btn btn-primary" href="index.html#contact">Get in touch</a>
 </div>
 </header>
@@ -76,6 +77,18 @@
 <p class="lead">Small bulb, big flavour. A clove or two adds warmth and depth to sauces, roasts and dressings.</p>
 <p class="price"><span class="price-amount">$0.79</span> <span class="price-unit">per bulb</span></p>
 <p class="price-note">Sample price for demonstration only.</p>
+<form class="buy" data-product="garlic" hidden>
+<div class="qty">
+<button type="button" class="qty-btn" data-step="-1" aria-label="Decrease quantity">−</button>
+<label class="visually-hidden" for="qty">Quantity</label>
+<input class="qty-input" id="qty" type="number" inputmode="numeric" min="1" max="99" value="1">
+<button type="button" class="qty-btn" data-step="1" aria-label="Increase quantity">+</button>
+</div>
+<button class="btn btn-primary" type="submit">Add to cart</button>
+<a class="btn btn-ghost" href="cart.html">View cart</a>
+</form>
+<p class="buy-status" role="status" aria-live="polite"></p>
+<noscript><p class="price-note">Enable JavaScript to use the shopping cart.</p></noscript>
 </div>
 </section>
 
@@ -105,11 +118,13 @@
 <ul class="footer-links">
 <li><a href="#top">Back to top</a></li>
 <li><a href="index.html#faq">FAQ</a></li>
+<li><a href="cart.html">Cart</a></li>
 <li><a href="index.html#contact">Contact</a></li>
 </ul>
 </footer>
 
 </div>
 <script src="js/main.js"></script>
+<script src="js/cart.js"></script>
 </body>
 </html>

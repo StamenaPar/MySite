@@ -9,6 +9,45 @@
   const currentId = new URLSearchParams(location.search).get('id');
   const data = window.SITE;
 
+  const store = {
+    mem: {},
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return this.mem[k] ?? null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) { this.mem[k] = v; } }
+  };
+
+  const CART_KEY = 'cart-v1';
+  const CART = {
+    items() {
+      try {
+        const o = JSON.parse(store.get(CART_KEY) || '{}');
+        return o && typeof o === 'object' ? o : {};
+      } catch (e) { return {}; }
+    },
+    save(o) {
+      store.set(CART_KEY, JSON.stringify(o));
+      window.dispatchEvent(new CustomEvent('cart:change'));
+    },
+    add(id, n = 1) {
+      if (!data || !data.products[id]) return;
+      const o = this.items();
+      o[id] = Math.min(99, (o[id] || 0) + n);
+      this.save(o);
+    },
+    set(id, n) {
+      const o = this.items();
+      if (n <= 0) delete o[id]; else o[id] = Math.min(99, n);
+      this.save(o);
+    },
+    remove(id) { this.set(id, 0); },
+    clear() { this.save({}); },
+    count() { return Object.values(this.items()).reduce((a, b) => a + b, 0); },
+    total() {
+      return Object.entries(this.items()).reduce((s, [id, q]) =>
+        s + (data && data.products[id] ? data.products[id].price * q : 0), 0);
+    }
+  };
+  window.CART = CART;
+
   const skip = document.createElement('a');
   skip.className = 'skip';
   skip.href = '#main';
@@ -20,13 +59,24 @@
     header.outerHTML = `<header class="site-header">
       <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="8" fill="#fff"/><path d="M9 26V10l9 10 9-10v16" fill="none" stroke="#2456d6" stroke-width="3" stroke-linejoin="round"/></svg>
       <div><p class="title">My Site</p><p class="tag">Fresh fruit and vegetables</p></div>
+      <a class="cart-link" href="cart.html"${current === 'cart.html' ? ' aria-current="page"' : ''}>
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l2.6 12.4a1 1 0 0 0 1 .8h9.8a1 1 0 0 0 1-.8L21 7H6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.6" fill="currentColor"/><circle cx="17.5" cy="20" r="1.6" fill="currentColor"/></svg>
+        <span>Cart</span><span class="badge" id="cart-count">0</span>
+      </a>
     </header>`;
   }
 
-  const store = {
-    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
-    set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* ignore */ } }
+  const updateBadge = () => {
+    const el = document.getElementById('cart-count');
+    if (!el) return;
+    const n = CART.count();
+    el.textContent = n;
+    el.classList.toggle('empty', n === 0);
+    el.parentElement.setAttribute('aria-label', `Cart, ${n} ${n === 1 ? 'item' : 'items'}`);
   };
+  updateBadge();
+  window.addEventListener('cart:change', updateBadge);
+  window.addEventListener('storage', e => { if (e.key === CART_KEY) { updateBadge(); window.dispatchEvent(new CustomEvent('cart:change')); } });
 
   const nav = document.getElementById('site-nav');
   if (nav) {

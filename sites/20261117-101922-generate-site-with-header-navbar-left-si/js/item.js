@@ -19,8 +19,26 @@
         <p class="lead">${p.tagline}</p>
         <p class="price"><strong>$${p.price.toFixed(2)}</strong> <span>per ${p.unit}</span></p>
         <p>${p.desc}</p>
+        <form class="add-row" id="add-form">
+          <label for="qty">Quantity (${p.unit})</label>
+          <input id="qty" type="number" min="1" max="99" value="1" inputmode="numeric">
+          <button type="submit" class="btn">Add to cart</button>
+          <a class="btn-link" href="cart.html">View cart</a>
+        </form>
+        <p id="add-status" class="status" role="status"></p>
       </div>
     </article>
     <h2>Characteristics</h2>
     <dl class="facts">${facts}</dl>`;
+
+  const form = document.getElementById('add-form');
+  const status = document.getElementById('add-status');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    let n = parseInt(document.getElementById('qty').value, 10);
+    if (!n || n < 1) n = 1;
+    window.CART.add(id, n);
+    const inCart = window.CART.items()[id];
+    status.textContent = `Added ${n} \u00d7 ${p.name}. You now have ${inCart} in your cart.`;
+  });
 })();
